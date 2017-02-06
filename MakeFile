@@ -4,11 +4,11 @@ Main: Main.o Object.o Persona.o Employee.o ADTList.o VSArrayList.o
 Main.o: Main.cpp Persona.h Object.h Employee.h ADTList.h VSArrayList.h
 	g++ -c Main.cpp
 
-Persona.o: Object.h Persona.h Persona.cpp
-	g++ -c Persona.cpp
-
 Object.o: Object.h Object.cpp
 	g++ -c Object.cpp
+
+Persona.o: Object.h Persona.h Persona.cpp
+	g++ -c Persona.cpp
 
 Employee.o: Persona.h Employee.h Employee.cpp
 	g++ -c Employee.cpp
