@@ -1,5 +1,6 @@
 #include "Object.h"
 #include <string>
+#include <sstream>
 #include <iostream>
 
 Object::Object(){

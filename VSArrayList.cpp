@@ -37,8 +37,8 @@ VSArrayList::VSArrayList(int current_capacity){
   delta = current_capacity;
   array = new Object* [current_capacity];
   if(!array){
-    cerr << "NO MEMORY LEFT" << endl;
-    exit(1);
+    //cerr << "NO MEMORY LEFT" << endl;
+    //exit(1);
   }
 }
 

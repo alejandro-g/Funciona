@@ -2,6 +2,7 @@
 #define OBJECT_H
 #include <iostream>
 #include <string>
+#include <sstream>
 
 class Object{
   public:

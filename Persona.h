@@ -8,7 +8,6 @@ class Persona: public Object{
 protected:
   string nombreEmpleado;
   int edadEmpleado;
-}
 
 public:
   Persona(string,int);
