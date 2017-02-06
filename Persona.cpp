@@ -9,7 +9,7 @@ Persona::Persona(string nombreEmpleado, int edadEmpleado): nombreEmpleado(nombre
 
 string Persona::toString()const{
   stringstream ss;
-  ss << "Nombre del Empleado: " << nombreEmpleado << "Edad del Empleado: " << edadEmpleado;
+  ss << "Nombre del Empleado: " << nombreEmpleado << "\n" << "Edad del Empleado: " << edadEmpleado << "\n";
   return ss.str();
 }
 

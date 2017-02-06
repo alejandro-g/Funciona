@@ -1,5 +1,5 @@
-Main: Main.o Persona.o Object.o Employee.o ADTList.o VSArrayList.o
-	g++ Main.o Persona.o Object.o Employee.o ADTList.o VSArrayList.o -o Main
+Main: Main.o Object.o Persona.o Employee.o ADTList.o VSArrayList.o
+	g++ Main.o Object.o Persona.o Employee.o ADTList.o VSArrayList.o -o Main
 
 Main.o: Main.cpp Persona.h Object.h Employee.h ADTList.h VSArrayList.h
 	g++ -c Main.cpp
