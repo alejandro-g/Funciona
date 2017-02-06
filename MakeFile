@@ -19,5 +19,5 @@ ADTList.o: ADTList.h ADTList.cpp
 VSArrayList.o: ADTList.h VSArrayList.h VSArrayList.cpp
 	g++ -c VSArrayList.cpp
 
-clean:
+Clean:
 	rm -f *.o Main
