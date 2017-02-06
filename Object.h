@@ -4,6 +4,8 @@
 #include <string>
 #include <sstream>
 
+using namespace std;
+
 class Object{
   public:
     Object();
