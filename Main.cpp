@@ -71,7 +71,8 @@ int main(){
       double promedio = 0, total = 0;
       if(!Employees->isEmpty()){//si la lista no esta vacia
         for (int i = 0; i < Employees->Size(); i++) {
-          promedio += Employees->get(i)->getSalario();
+          Employee* chosenOne = (Employee*) Employees->get(i);
+          promedio += chosenOne->getSalario();
         }
         total = promedio/Employees->Size();
         cout << "El promedio de los salarios de los empleados es de: Lps." << total << endl;
