@@ -5,20 +5,13 @@
 #include <string>
 #include <sstream>
 
-Employee::Employee(){
 
-}
-
-Employee::Employee(string nombre, int edad, double pSalario):Persona(nombre, edad){
-  salario = getSalario();
-}
-
-Employee::~Employee(){
-
+Employee::Employee(string nombre, int edad, double salario):Persona(nombre, edad){
+  this->salario = salario;
 }
 
 void Employee::setSalario(double salario){
-  salario = pSalario;
+  this->salario = salario;
 }
 
 double Employee::getSalario(){
@@ -32,11 +25,11 @@ void Employee::setIncremento(double incremento){
 //toString de la clase empleado para demostrar su nombre, edad, y salario
 string Employee::toString(){
   stringstream ss;
-  ss << Persona.toString() << "Salario del empleado: " << salario << endl;
+  ss << Persona::toString() << "Salario del empleado: " << salario << endl;
   return ss.str();
 }
 
 bool Employee::equals(Object* other){
-    if(!dynamic_cast<Empleado*>(other))
+    if(dynamic_cast<Employee*>(other))
       return false;
 }

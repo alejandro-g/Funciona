@@ -4,15 +4,14 @@
 #include "Object.h"
 #include <string>
 #include <sstream>
+#include <iostream>
 
 class Employee: public Persona{
 protected:
   double salario;
 
 public:
-  Employee();
   Employee(string, int, double);
-  ~Employee();
   void setSalario(double);
   double getSalario();
   void setIncremento(double);

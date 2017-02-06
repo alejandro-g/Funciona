@@ -3,14 +3,6 @@
 #include <sstream>
 #include <iostream>
 
-Persona::Persona(){
-
-}
-
-Persona::~Persona(){
-
-}
-
 Persona::Persona(string nombreEmpleado, int edadEmpleado): nombreEmpleado(nombreEmpleado),edadEmpleado(edadEmpleado){
 
 }
@@ -21,10 +13,11 @@ string Persona::toString()const{
   return ss.str();
 }
 
-bool Persona::equals(Object* other){
-  if(!dynamic.cast<Persona*>(other))
+bool Persona::equals(Object* other)const{
+  if(dynamic_cast<Persona*>(other)){
     return false;
+  }
 
-    Persona* persona = dynamic.cast<Persona*>(other);
+    Persona* persona = dynamic_cast<Persona*>(other);
     return persona->nombreEmpleado == nombreEmpleado;
 }

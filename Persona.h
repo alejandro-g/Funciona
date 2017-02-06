@@ -2,7 +2,6 @@
 #define PERSONA_H
 #include <iostream>
 #include "Object.h"
-#include <string>
 
 class Persona: public Object{
 protected:

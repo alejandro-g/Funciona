@@ -11,23 +11,30 @@ using namespace std;
 void menu();
 
 int main(){
-  ADTList* Employees = new VSArrayList();//creacion de la lista de Empleados
+  int current_capacity = 0;
+  cout << "Ingrese capacidad de la lista: ";
+  cin >> current_capacity;
+  ADTList* Employees = new VSArrayList(current_capacity);//creacion de la lista de Empleados
   cout << "La lista ha sido creada con exito!" << endl;
   int opcion = 0;
   do{
     menu();//se creo el metodo menu para no dejar todo en el main y para que se vea mas ordenado
     cin >> opcion;
     if(opcion == 1){//insercion de nuevo empleados en la lista recien creada
-      string nombreEmpleado, int edadEmpleado, double salario;
+      string nombreEmpleado;
+      int edadEmpleado;
+      double salario;
       cout << "Por favor ingrese nombre del nuevo empleado: ";
       cin.ignore();//metodo perteneciente a cin para asi poder ignorar cualquier espacio cuando se ingrese el nombre del empleado
       getline(cin, nombreEmpleado);
       cout << endl;
       cout << "Por favor ingrese edad del empleado: ";
-      cin >> edadEmpleado << endl;
+      cin >> edadEmpleado;
+      cout << endl;
       cout << "Cuaunto sera el salario de su nuevo empleado?: ";
-      cin >> salario << endl;
-      if(Employees->insert(new Employee(nombreEmpleado, edadEmpleado, salario), Employees->size())){//creacion del objeto empleado y tambien obtiene el size de la lista
+      cin >> salario;
+      cout << endl;//para evitar sobrecarga de operadores
+      if(Employees->insert(new Employee(nombreEmpleado, edadEmpleado, salario), Employees->Size())){//creacion del objeto empleado y tambien obtiene el size de la lista
         cout << "El Empleado ha sido agregado de forma Exitosa!" << endl;
       }else{
         cout << "No se ha podido agregar al empleado, operacion fallida!" << endl;
@@ -36,7 +43,7 @@ int main(){
     if(opcion == 2){//listar a los empleados existentes
       cout << "Lista de los empleados exitentes: " << endl;
       if(!Employees->isEmpty()){//si la lista no esta vacia
-        for (int i = 0; i < Employees->size(); i++) {
+        for (int i = 0; i < Employees->Size(); i++) {
           cout << i << ")" << Employees->get(i)->toString() << endl;
         }
       }else{
@@ -47,12 +54,13 @@ int main(){
       int position;
       cout << "Lista de empleados que estan en la lista: " << endl;
       if(!Employees->isEmpty())//si la lista no esta vacia
-        for(int i = 0l i < Employees->size(); i++){
+        for(int i = 0; i < Employees->Size(); i++){
           cout << i << ")" << Employees->get(i)->toString() << endl;
         }
         cout << "Escoga la posicion del empleado que desea eliminar!";
-        cin >> position << endl;
-        if(position < Employees->size() && psition >= 0){
+        cin >> position;
+        cout << endl;
+        if(position < Employees->Size() && position >= 0){
           //Employee* deletedEmployee = (Employee*)Employees->remove(position);
           cout << "El empleado ha sido eliminado Exitosamente!" << endl;
         }else{
@@ -62,10 +70,10 @@ int main(){
     if(opcion == 4){//salario promedio de los empleados
       double promedio = 0, total = 0;
       if(!Employees->isEmpty()){//si la lista no esta vacia
-        for (int i = 0; i < Employees->size(); i++) {
+        for (int i = 0; i < Employees->Size(); i++) {
           promedio += Employees->get(i)->getSalario();
         }
-        total = promedio/Employees->size();
+        total = promedio/Employees->Size();
         cout << "El promedio de los salarios de los empleados es de: Lps." << total << endl;
       }else{
         cout << "La lista se encuentra vacia por el momento" << endl;
@@ -74,7 +82,7 @@ int main(){
     if(opcion == 5){//revisar salario maximo de la lista de empleados
       double maximo = 0;
       if(!Employees->isEmpty()){//si la lista no esta vacia
-        for (int i = 0; i < Employees->size(); i++) {
+        for (int i = 0; i < Employees->Size(); i++) {
           if(dynamic_cast <Employee*>(Employees->get(i))->getSalario() > maximo){
             maximo = dynamic_cast <Employee*>(Employees->get(i))->getSalario();//le asigna el salario maximo al empleado que se encuentre en la posicion i
           }
@@ -87,7 +95,7 @@ int main(){
     if(opcion == 6){//revisar salario minimo entre toda la lista de empleados
       double minimo = 0;
       if(!Employees->isEmpty()){//si la lista no esta vacia
-        for (int i = 0; i < Employees->size(); i++) {
+        for (int i = 0; i < Employees->Size(); i++) {
           if(dynamic_cast<Employee*>(Employees->get(i))->getSalario() < minimo){
             minimo = dynamic_cast<Employee*>(Employees->get(i))->getSalario();
           }
@@ -103,7 +111,7 @@ int main(){
         cout << "Ingrese el porcentaje de inflacion: ";
         cin >> aumento;
         aumento = aumento / 100;//convertir de entero a porcentaje
-        for (int i = 0; i < Employees->size(); i++) {
+        for (int i = 0; i < Employees->Size(); i++) {
           nuevoSalario = dynamic_cast<Employee*>(Employees->get(i))->getSalario();//consigue el salario actual de el empleado
           nuevoSalario = nuevoSalario + (nuevoSalario*aumento);//consigue el salario actual del empleado y se lo suma al aumento que tuvo
           dynamic_cast <Employee*>(Employees->get(i))->setSalario(nuevoSalario);//le asigna el nuevo salario al empleado
@@ -116,7 +124,8 @@ int main(){
     if(opcion == 8){//opcion para salirse de la simulacion
       cout << "Disfrute su nuevo puesto como gerente! Esperamos vuelva pronto!" << endl;
     }//cierre opcion 8
-  }while(opcion != 8 && opcion > 0)//fin do-while
+  }while(opcion != 8 && opcion > 0);//fin do-while
+  return 0;
 }
 
 void menu(){
