@@ -1,0 +1,23 @@
+main: main.o Persona.o Object.o Employee.o ADTList.o VSArrayList.o
+	g++ main.o Persona.o Object.o Employee.o ADTList.o VSArrayList.o -o Main
+
+main.o: main.cpp Persona.h Object.h Employee.h ADTList.h VSArrayList.h
+	g++ -c main.cpp
+
+Persona.o: Object.h Persona.h Persona.cpp
+	g++ -c Persona.cpp
+
+Object.o: Object.h Object.cpp
+	g++ -c Object.cpp
+
+Employee.o: Persona.h Employee.h Employee.cpp
+	g++ -c Employee.cpp
+
+ADTList.o: ADTList.h ADTList.cpp
+	g++ -c ADTList.cpp
+
+VSArrayList.o: ADTList.h VSArrayList.h VSArrayList.cpp
+	g++ -c VSArrayList.cpp
+
+clean:
+	rm -f *.o Main
